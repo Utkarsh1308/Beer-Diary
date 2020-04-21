@@ -1,0 +1,11 @@
+{% load custom_url %}
+
+<html>
+<title>Beers</title>
+<body>
+  <h1>List of Beers</h1>
+  {% for beer in Beers %}
+    <li><a href="{% url 'beers:beer' beer=beer.name|custom_url %}">{{ beer.name }}</a></li>
+  {% endfor %}
+</body>
+</html>
