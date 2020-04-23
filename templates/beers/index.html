@@ -3,6 +3,11 @@
 <html>
 <title>Beers</title>
 <body>
+
+  <button>
+      <a href="{% url 'beers:add_beer' %}">Add Beer</a>
+  </button>
+
   <h1>List of Beers</h1>
   {% for beer in Beers %}
     <li><a href="{% url 'beers:beer' beer=beer.name|custom_url %}">{{ beer.name }}</a></li>

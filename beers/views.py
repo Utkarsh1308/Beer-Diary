@@ -1,7 +1,10 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, FormView
 
 from .models import Beer
+from .forms import AddBeerForm
 
 # Create your views here.
 def index(request):
@@ -28,3 +31,8 @@ def beer(request, beer):
         'Beers': Beers,
     }
     return render(request, 'beers/beer.html', context)
+
+class AddBeer(CreateView):
+    form_class = AddBeerForm
+    template_name = 'beers/add_beer.html'
+    success_url = reverse_lazy('beers:add_beer')
