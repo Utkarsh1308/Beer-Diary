@@ -11,6 +11,19 @@
   <h1>List of Beers</h1>
   {% for beer in Beers %}
     <li><a href="{% url 'beers:beer' beer=beer.name|custom_url %}">{{ beer.name }}</a></li>
+
+    <!-- Update -->
+    <button>
+        <a href="{% url 'beers:update_beer' beer.id %}">Update Beer</a>
+    </button>
+
+    <!-- Delete -->
+    <form action="{% url 'beers:delete_beer' beer.id %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="beer_id" value="{{ beer.id }}">
+      <button type="submit">Delete</button>
+    </form>
+
   {% endfor %}
 </body>
 </html>
