@@ -1,0 +1,77 @@
+{% load staticfiles %}
+{% load custom_url %}
+
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  {% block add-css-files %}
+  {% endblock %}
+
+  {% block add-js-files %}
+  {% endblock %}
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <!-- Header -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+  </button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Items -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <a class="navbar-brand" href="{% url 'beers:index' %}">BeerDiary</a>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'beers:index' %}">Beers</a>
+      </li>
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="">
+        <a href="">
+          <a href="{% url 'beers:add_beer' %}">&nbsp; Add Beer &nbsp;</a>
+        </a>
+      </li>
+      {% if user.username %}
+        <li>
+          <a>{{ user.username }} &nbsp;</a>
+        </li>
+        <li>
+          <a href="{% url 'beers:logout_user' %}">logout</a>
+        </li>
+      {% else %}
+        <li>
+          <a href="{% url 'beers:login_user' %}">Login &nbsp;</a>
+        </li>
+        <li>
+          <a href="{% url 'beers:register' %}">Sign Up</a>
+        </li>
+      {% endif %}
+    </ul>
+
+
+  </div>
+</nav>
+
+{% block main-content %}
+{% endblock %}
+
+</body>

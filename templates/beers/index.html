@@ -1,31 +1,15 @@
+{% extends 'base.html' %}
 {% load custom_url %}
+{% load staticfiles %}
 
-<html>
-<title>Beers</title>
-<body>
+{% block title %}
+Beer Diary
+{% endblock %}
 
-  {% if user.username %}
-    <li>
-      <a>{{ user.username }}</a>
-    </li>
-    <li>
-      <a href="{% url 'beers:logout_user' %}">logout</a>
-    </li>
-  {% else %}
-    <li>
-      <a href="{% url 'beers:login_user' %}">Login</a>
-    </li>
-    <li>
-      <a href="{% url 'beers:register' %}">Sign Up</a>
-    </li>
-  {% endif %}
+{% block add-css-files %}
+{% endblock %}
 
-
-  <button>
-      <a href="{% url 'beers:add_beer' %}">Add Beer</a>
-  </button>
-
-
+{% block main-content %}
 
   <h1>List of Beers</h1>
   {% for beer in Beers %}
@@ -44,5 +28,5 @@
     </form>
 
   {% endfor %}
-</body>
-</html>
+
+{% endblock %}

@@ -1,25 +1,31 @@
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Beer Data</title>
-  </head>
-  <body>
-    Details of Beer
+{% extends 'base.html' %}
+{% load custom_url %}
+{% load staticfiles %}
 
-    <div>
-    <ul>
-      <li>Name:         {{ section.name }}</li>
-      <li>Brewer:       {{ section.brewer }}</li>
-      <li>Date:         {{ section.date }}</li>
-      <li>Price:        {{ section.price }}</li>
-      <li>Serving Type: {{ section.serving_type }}</li>
-      <li>Rating:       {{ section.rating }}</li>
-      <li>Description:  {{ section.description }}</li>
-    </ul>
-    </div>
-  </body>
+{% block title %}
+Beer Data
+{% endblock %}
+
+{% block add-css-files %}
+{% endblock %}
+
+{% block main-content %}
+
+  <h1>{{ section.name }}</h1>
+
+  <div>
+  <ul>
+    <li>Brewer:       {{ section.brewer }}</li>
+    <li>Date:         {{ section.date }}</li>
+    <li>Price:        {{ section.price }}</li>
+    <li>Serving Type: {{ section.serving_type }}</li>
+    <li>Rating:       {{ section.rating }}</li>
+    <li>Description:  {{ section.description }}</li>
+  </ul>
+  </div>
+
   <button>
     <a href="{% url 'beers:index' %}">Home</a>
   </button>
 
-</html>
+{% endblock %}

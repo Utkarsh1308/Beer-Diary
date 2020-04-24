@@ -1,4 +1,15 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
+
+{% block title %}
+Add Beer
+{% endblock %}
+
+{% block add-css-files %}
+{% endblock %}
+
+{% block main-content %}
+
 
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
@@ -9,3 +20,5 @@
 <button>
   <a href="{% url 'beers:index' %}">Home</a>
 </button>
+
+{% endblock %}
