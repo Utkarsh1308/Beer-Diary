@@ -4,9 +4,28 @@
 <title>Beers</title>
 <body>
 
+  {% if user.username %}
+    <li>
+      <a>{{ user.username }}</a>
+    </li>
+    <li>
+      <a href="{% url 'beers:logout_user' %}">logout</a>
+    </li>
+  {% else %}
+    <li>
+      <a href="{% url 'beers:login_user' %}">Login</a>
+    </li>
+    <li>
+      <a href="{% url 'beers:register' %}">Sign Up</a>
+    </li>
+  {% endif %}
+
+
   <button>
       <a href="{% url 'beers:add_beer' %}">Add Beer</a>
   </button>
+
+
 
   <h1>List of Beers</h1>
   {% for beer in Beers %}

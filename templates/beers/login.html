@@ -1,0 +1,11 @@
+{% load staticfiles %}
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="name" class="username" name="username" placeholder="Username">
+  <input type="password" class="password" name="password" placeholder="Password">
+  <button type="submit">Submit</button>
+</form>
+<button>
+  <a href="{% url 'beers:index' %}">Home</a>
+</button>
