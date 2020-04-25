@@ -5,6 +5,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
   <title>{% block title %}{% endblock %}</title>
 
@@ -45,17 +46,19 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li class="">
-        <a href="">
-          <a href="{% url 'beers:add_beer' %}">&nbsp; Add Beer &nbsp;</a>
-        </a>
-      </li>
       {% if user.username %}
         <li>
           <a>{{ user.username }} &nbsp;</a>
         </li>
+        <li class="">
+          <a href="{% url 'beers:add_beer' %}">
+            <i class="fa fa-plus" aria-hidden="true"></i> Add Beer &nbsp;</a>
+          </a>
+        </li>
         <li>
-          <a href="{% url 'beers:logout_user' %}">logout</a>
+          <a href="{% url 'beers:logout_user' %}">
+            <i class="fa fa-power-off" aria-hidden="true"></i> logout
+          </a>
         </li>
       {% else %}
         <li>
