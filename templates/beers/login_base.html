@@ -6,7 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
-  <title>BeerDiary | Login</title>
+  <title>{% block title %}{% endblock %}</title>
+
+  {% block add-css-files %}
+  {% endblock %}
+
+  {% block add-js-files %}
+  {% endblock %}
+
 
   <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -16,6 +23,12 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
   <script src="{% static 'js/account.js' %}"></script>
   <style type="text/css">
+
+            .active {
+              font-size: 24px;
+              font-weight: 600;
+              color: #E1C63F
+            }
 
             .login_button {
               float:left;
@@ -89,69 +102,32 @@
                         </div>
 
                         <div class='buttons'>
-                            <div class="active font-class" style="text-align:left;margin-top:0px;color:aqua;margin-left: 5px"><p style="font-size: 20px"><span  id="loginButton"  style="font-size: 24px;font-weight: 600;color: #E1C63F">Login</span> | <span id="registerButton">SignUp</span></p></div>
+                            <div class="font-class" style="text-align:left;margin-top:0px;color:aqua;margin-left: 5px">
+                              <p style="font-size: 20px">
+                                {% block active %}
+                  
+                                {% endblock %}
+                              </p>
+                            </div>
                             <br>
                         </div>
-                        <form method="post" enctype="multipart/form-data" class="form font" data-aos="fade-in">
-                            <table>
-                                {% csrf_token %}
-                                <input type="name" class="username placeholderFont" name="username" placeholder="Username" style="background: #0C0D0F;border:0px !important;color: aliceblue;outline: 0px;margin-bottom: 8px;font-family: Raleway;width: 330px;margin-right: 60px;margin-left: 5px">
-                                <div style="width: 330px;height: 1px;background-color: aliceblue;margin-bottom: 50px;margin-left: 5px"></div>
-                                <input type="password" class="password placeholderFont" name="password" placeholder="Password" style="background: #0C0D0F;border:0px !important;color: aliceblue;outline: 0px;margin-bottom: 8px;margin-left: 5px;font-family: Raleway;width: 330px;margin-right: 60px">
-                                <div style="width: 330px;height: 1px;background-color: aliceblue;margin-bottom: 30px;margin-left: 5px"></div>
-                                <table>
-                                    <tr>
-                                        <td style="color: aliceblue;margin-right: 5px;font-size: 14px">
-                                            Remember Me
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" style="color: aliceblue;margin-right: 94px;font-size: 14px">
-                                        </td>
-
-                                        <td style="color: aliceblue;font-size: 14px;text-align: end">
-                                            Forgot Password ?
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div style="color: aliceblue;margin-right: 5px;font-size: 14px;margin-left: 3px;margin-top: 51px;margin-bottom: 10px;text-align: left">
-                                    Login with:
-                                </div>
-                                <table>
-                                    <tr>
-                                        <td style="padding-left: 0px !important;padding-right: 25px;width: auto">
-                                            <div class="facebook"></div>
-                                        </td>
-                                        <td style="padding-left: 0px !important;padding-right: 25px">
-                                            <div class="github"></div>
-                                        </td>
-                                        <td style="padding-left: 0px !important;padding-right: 25px">
-                                            <div class="google"></div>
-                                        </td>
-                                        <td>
-                                            <div class="linkedin"></div>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div>
-                                <button class="login_button" type="submit">Login</button>
-                                </div>
-                            </table>
-                        </form>
+                        {% block form %}
+                        {% endblock %}
                         <br>
                     </div>
                 </td>
             </table>
         </div>
-        <script>
 
-            $("#button1").click(function () {
+        <script>
+            $("#registerButton").click(function () {
                 $(this).addClass("active");
-                $("#button2").removeClass("active");
+                $("#loginButton").removeClass("active");
             });
 
-            $("#button2").click(function () {
+            $("#loginButton").click(function () {
                 $(this).addClass("active");
-                $("#button1").removeClass("active");
+                $("#registerButton").removeClass("active");
             });
 
             document.getElementById("loginButton").onclick = function () {
@@ -167,5 +143,12 @@
         <script>
             AOS.init();
         </script>
+
+        {% block script %}
+        {% endblock %}
+
+        {% block main-content %}
+        {% endblock %}
+
     </body>
 </html>

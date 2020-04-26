@@ -1,97 +1,19 @@
-<!DOCTYPE html>
+{% extends 'beers/login_base.html' %}
 {% load staticfiles %}
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
-  <title>BeerDiary | Login</title>
+{% block title %}
+BeerDiary | Login
+{% endblock %}
 
-  <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
-  <script src="{% static 'js/account.js' %}"></script>
-  <style type="text/css">
+{% block add-css-files %}
+{% endblock %}
 
-            .login_button {
-              float:left;
-              font-family:'raleway';
-              margin-left: 0px;
-              align: left;
-              width:116px;
-              border: none;
-              padding: 8px;
-              background:#F3D445;
-              color:#0C0D0F;
-              width:100px;
-              font-weight: 600;
-              font-size: 16px;
-              margin-top: 30px;
-              margin-left: 3px;
-              width: 116px;
-            }
+{% block active %}
+<span class="active" id="loginButton">Login</span> | <span id="registerButton">SignUp</span>
+{%endblock%}
 
-            .login_button:hover {
-              background-color: #FFCA28;
-              cursor: pointer;
-            }
+{% block form %}
 
-            .facebook{
-
-                height: 30px;
-                width:30px;
-                background-image: url('{% static "assets/images/facebook.png" %}');
-                background-size: cover;
-
-            }
-
-            .github{
-
-                height: 30px;
-                width:30px;
-                background-image: url('{% static "assets/images/github.png" %}');
-                background-size: cover;
-
-            }
-            .linkedin{
-
-                height: 30px;
-                width:30px;
-                background-image: url('{% static "assets/images/linkedin.png" %}');
-                background-size: cover;
-
-            }
-            .google{
-
-                height: 30px;
-                width:30px;
-                background-image: url('{% static "assets/images/google.png" %}');
-                background-size: cover;
-
-            }
-        </style>
-
-
-    </head>
-    <body>
-        <div class="wrapper font-class">
-            <table style="margin: auto">
-                <td>
-                    <div id="main_wrapper" style="padding-left: 80px">
-                        <div style="margin-bottom: 20px;text-align: left;margin-left: 5px">
-                            <span style="font-size: 32px;font-weight: 600">
-                                <a style="color: grey; text-decoration: none;" href="{% url 'beers:index' %}">Home</a>
-                            </span>
-                        </div>
-
-                        <div class='buttons'>
-                            <div class="active font-class" style="text-align:left;margin-top:0px;color:aqua;margin-left: 5px"><p style="font-size: 20px"><span  id="loginButton"  style="font-size: 24px;font-weight: 600;color: #E1C63F">Login</span> | <span id="registerButton">SignUp</span></p></div>
-                            <br>
-                        </div>
                         <form method="post" enctype="multipart/form-data" class="form font" data-aos="fade-in">
                             <table>
                                 {% csrf_token %}
@@ -137,35 +59,4 @@
                                 </div>
                             </table>
                         </form>
-                        <br>
-                    </div>
-                </td>
-            </table>
-        </div>
-        <script>
-
-            $("#button1").click(function () {
-                $(this).addClass("active");
-                $("#button2").removeClass("active");
-            });
-
-            $("#button2").click(function () {
-                $(this).addClass("active");
-                $("#button1").removeClass("active");
-            });
-
-            document.getElementById("loginButton").onclick = function () {
-                location.href = "login";
-            };
-
-            document.getElementById("registerButton").onclick = function () {
-                location.href = "register";
-            };
-
-        </script>
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
-    </body>
-</html>
+{% endblock %}
