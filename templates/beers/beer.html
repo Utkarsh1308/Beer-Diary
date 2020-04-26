@@ -16,7 +16,7 @@ Beer Data
   <div>
   <ul>
     <li>Brewer:       {{ section.brewer }}</li>
-    <li>Date:         {{ section.date }}</li>
+    <li>Date:         {{ section.date.date }}</li>
     <li>Price:        {{ section.price }}</li>
     <li>Serving Type: {{ section.serving_type }}</li>
     <li>Rating:       {{ section.rating }}</li>
@@ -25,7 +25,15 @@ Beer Data
   </div>
 
   <button>
-    <a href="{% url 'beers:index' %}">Home</a>
+    <a href="{% url 'beers:detail' %}">Home</a>
   </button>
+
+  <br><br>
+
+  <form action="{% url 'beers:delete_beer' section.id %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="beer_id" value="{{ section.id }}">
+    <button type="submit">Delete</button>
+  </form>
 
 {% endblock %}

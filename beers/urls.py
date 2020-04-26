@@ -5,6 +5,7 @@ app_name = "beers"
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('beer', views.detail, name='detail'),
     path('beer/<slug:beer>', views.beer, name='beer'),
     path('add/beer', views.AddBeer.as_view(), name='add_beer'),
     path('<slug:pk>/update', views.UpdateBeer.as_view(), name='update_beer'),

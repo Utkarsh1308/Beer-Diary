@@ -18,6 +18,14 @@ def index(request):
 
     return render(request, 'beers/index.html', context)
 
+def detail(request):
+    Beers = Beer.objects.all()
+    context = {
+        'Beers': Beers
+    }
+
+    return render(request, 'beers/detail.html', context)
+
 def beer(request, beer):
     def get_beer(beer):
         if '_' in str(beer):
@@ -88,14 +96,14 @@ def logout_user(request):
 class AddBeer(CreateView):
     form_class = AddBeerForm
     template_name = 'beers/add_beer.html'
-    success_url = reverse_lazy('beers:index')
+    success_url = reverse_lazy('beers:detail')
 
 class UpdateBeer(UpdateView):
     form_class = AddBeerForm
     template_name = 'beers/add_beer.html'
     model = Beer
-    success_url = reverse_lazy('beers:index')
+    success_url = reverse_lazy('beers:detail')
 
 class DeleteBeer(DeleteView):
     model = Beer
-    success_url = reverse_lazy('beers:index')
+    success_url = reverse_lazy('beers:detail')

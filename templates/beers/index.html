@@ -11,22 +11,15 @@ Beer Diary
 
 {% block main-content %}
 
-  <h1>List of Beers</h1>
-  {% for beer in Beers %}
-    <li><a href="{% url 'beers:beer' beer=beer.name|custom_url %}">{{ beer.name }}</a></li>
-
-    <!-- Update -->
-    <button>
-        <a href="{% url 'beers:update_beer' beer.id %}">Update Beer</a>
-    </button>
-
-    <!-- Delete -->
-    <form action="{% url 'beers:delete_beer' beer.id %}" method="post">
-      {% csrf_token %}
-      <input type="hidden" name="beer_id" value="{{ beer.id }}">
-      <button type="submit">Delete</button>
-    </form>
-
-  {% endfor %}
+<div class="jumbotron" id="jumbo">
+  <div class="container-body" style="text-align: center">
+    <h1 class="display-4" id="heading-1">Beer Diary</h1>
+    <p class="lead">Share your beer drinking experience with the world</p>
+    <hr class="my-4">
+    <p>Create an account to start writing your posts.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'beers:register' %}" role="button">Sign Up</a>
+    <a class="btn btn-primary btn-lg" href="{% url 'beers:login_user' %}" role="button">Log In</a>
+  </div>
+</div>
 
 {% endblock %}
