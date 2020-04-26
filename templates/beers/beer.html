@@ -7,33 +7,267 @@ Beer Data
 {% endblock %}
 
 {% block add-css-files %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/practice.css' %}" >
+
+<style type="text/css">
+
+    .raleway {
+      background-color: #18191D;
+    }
+
+    .box{
+        width:80px;
+        height: 1px;
+        background-color: aqua;
+        margin: auto;
+    }
+
+    .line{
+        width: 40%;
+        height: 1px;
+        background-color: aqua;
+        margin: auto;
+    }
+
+    .table_options{
+        color:white;
+        margin-left: 12px;
+    }
+
+    .table_first{
+        background-color: aqua;
+        width: 10px;
+        height:5px;
+    }
+
+    .box{
+        margin-left: 80px;
+    }
+
+    .question-box2{
+        color: white;
+        border-radius: 6px;
+        background-color: #0C0D0F;
+        height: auto;
+        width: 820px;
+        margin-bottom: 20px;
+        padding: 16px 8px 0px 16px;
+        box-shadow: 10px 10px #000;
+    }
+    .question-box3{
+        color: white;
+        border-radius: 6px 6px 0px 0px;
+        background-color: #0C0D0F;
+        height: auto;
+        width: 820px;
+        padding: 16px 0px 8px 0px;
+        min-width: 820px;
+        box-shadow: 10px 10px #000;
+    }
+    .green2{
+        border: none;
+        color: white !important;
+        padding: 4px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        float: right;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 5px 5px #000;
+        margin-right: 4px;
+        background-color: #7033b5;
+        -webkit-transition-duration: 0.2s; /* Safari */
+        transition-duration: 0.2s;
+    }
+
+    @media all and (max-width: 1300px) {
+        #Notes { display: none; }
+    }
+    .green2:hover{
+        opacity: 0.9;
+    }
+    a.button {
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        appearance: button;
+
+        text-decoration: none;
+        color: initial;
+    }
+    a:hover{
+        color: white;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    .tagBox{
+        background: #111214;
+        padding-left: 6px;
+        padding-right: 6px;
+        font-weight: 600;
+        color: aliceblue;
+        font-size: 12px;
+        margin-right: 6px;
+        border-radius: 20px;
+        box-shadow: 2px 2px #000;
+    }
+    ::-webkit-scrollbar {
+        width: 1em;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: white;
+        outline: 1px solid #672E9F;
+    }
+    .lead{
+        width: 230px;
+        height: 125px;
+        margin-top:20px;
+        border-radius: 6px;
+        box-shadow: 8px 8px #000;
+        margin-left: 40px !important;
+        background-image: linear-gradient(to bottom right, #8334b3, #3c33b2);
+    }
+
+    progress[value] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    progress::-webkit-progress-bar{
+        background-color: #fff;
+        width: 100%;
+    }
+
+    progress::-webkit-progress-value {
+        background-image: linear-gradient(to bottom right, #9be627, #3de31d) !important;
+    }
+</style>
 {% endblock %}
 
 {% block main-content %}
 
-  <h1>{{ section.name }}</h1>
+  <div class=" raleway" style="min-width: 1000px !important;width: 100%;display: inline-block">
+      <div class="row" style="margin-bottom:40px;margin-top: 150px">
 
-  <div>
-  <ul>
-    <li>Brewer:       {{ section.brewer }}</li>
-    <li>Date:         {{ section.date.date }}</li>
-    <li>Price:        {{ section.price }}</li>
-    <li>Serving Type: {{ section.serving_type }}</li>
-    <li>Rating:       {{ section.rating }}</li>
-    <li>Description:  {{ section.description }}</li>
-  </ul>
+          <div style="margin-left: 95px;width: 250px;margin-top: 135.5px;cursor: pointer">
+
+          </div>
+          <div>
+              <table>
+                  <th>
+                      <div id="Leaderboard" class="raleway" style="text-align:left;color:#fff;margin-left:6px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">{{section.name}}</span></p>
+                      </div>
+                  </th>
+                  <tr class="table_options">
+                      <td>
+                          <div class="question-box2">
+                              <table style="width: 700px;margin-bottom: 30px">
+                                  <tr style="color:white">
+                                      <td style="width: 330px">
+                                          <div style="white-space: nowrap;text-overflow: ellipsis;width: 300px;overflow: hidden">
+                                              <h5 style="margin-left:0px;margin-top:0px;margin-bottom: 10px;width: 120px">Brewer</h5>
+                                          </div>
+                                          <p style="font-weight: 100;margin-bottom: 30px">{{ section.brewer }}</p>
+                                          <h6 style="margin-bottom: 10px">
+                                              Date
+                                          </h6>
+                                          <p style="margin-bottom: 30px;font-weight: 100;">{{ section.date.date }}</p>
+                                          <h6 style="margin-bottom: 10px">
+                                              Price
+                                          </h6>
+                                          <p style="margin-bottom: 30px;font-weight: 100;">{{ section.price }}</p>
+                                          <h6 style="margin-bottom: 10px">
+                                              Serving Type
+                                          </h6>
+                                          <p style="margin-bottom: 30px;font-weight: 100;">{{ section.serving_type }}</p>
+                                          <h6 style="margin-bottom: 10px">
+                                              Rating
+                                          </h6>
+                                          <p style="margin-bottom: 30px;background:#232323;width:200px;padding:4px;font-family:monospace">{{ section.rating }}</p>
+                                          <h6 style="margin-bottom: 10px">
+                                              Description
+                                          </h6>
+                                          <p style="margin-bottom: 30px;font-weight: 100;">{{ section.description }}</p>
+                                          <h6 style="margin-bottom: 10px">
+                                            <form action="{% url 'beers:delete_beer' section.id %}" method="post">
+                                              {% csrf_token %}
+                                              <input type="hidden" name="beer_id" value="{{ section.id }}">
+                                              <button class="btn btn-danger" type="submit">Delete</button>
+                                            </form>
+                                          </h6>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </div>
+                      </td>
+                  </tr>
+              </table>
+          </div>
+
+          <div class="col-md-2" style="margin-top: 30px">
+
+              <a href="{% url 'beers:detail' %}"><div class="green2" style="background-color: #7130ae;color: white;margin-left: 40px;float: none!important">Back to posts<span style="font-size: 12px">&nbsp;&#9650;</span></div></a>
+
+          </div>
+      </div>
   </div>
+  <script src="{% static 'js/ace-builds-master/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+  <script>
+      var editor = ace.edit("editor");
 
-  <button>
-    <a href="{% url 'beers:detail' %}">Home</a>
-  </button>
+      function myFunction() {
+          var code = editor.getValue();
+          var username = document.getElementById("code")
+          username.value = code
+      }
 
-  <br><br>
+      $('#reset').click(function(){
+          editor.session.setValue("")
+      });
 
-  <form action="{% url 'beers:delete_beer' section.id %}" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="beer_id" value="{{ section.id }}">
-    <button type="submit">Delete</button>
-  </form>
+  </script>
+  <script>
+
+      $('#customInput').hide();
+      $('#up').hide();
+
+      $('#langMenu a').click(function(){
+          $('#hello').text($(this).text());
+      });
+
+      $('#check').click(function(){
+          if($(this).prop("checked") == true){
+              $('#customInput').fadeIn();
+          }
+          else if($(this).prop("checked") == false){
+              $('#customInput').fadeOut();
+          }    });
+
+      var x = 0;
+      $('#notes').hide();
+
+      $('#noteHead').click(function(){
+          if(x % 2 == 0){
+              $('#notes').fadeIn();
+              $('#up').show();
+              $('#down').hide();
+          }
+          else {
+              $('#notes').fadeOut();
+              $('#down').show();
+              $('#up').hide();
+          }
+          x++;
+      });
+      // Code
+  </script>
+
+
+
 
 {% endblock %}
