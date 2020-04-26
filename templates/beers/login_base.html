@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
-  <title>BeerDiary | Sign Up</title>
+  <title>BeerDiary | Login</title>
 
   <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
@@ -76,36 +75,46 @@
             }
         </style>
 
+
     </head>
     <body>
         <div class="wrapper font-class">
             <table style="margin: auto">
                 <td>
                     <div id="main_wrapper" style="padding-left: 80px">
-                        <div style="margin-bottom: 20px;margin-left: 10px;text-align: left;margin-left: 5px">
-                            <span style="color: white;font-size: 32px;font-weight: 600">
+                        <div style="margin-bottom: 20px;text-align: left;margin-left: 5px">
+                            <span style="font-size: 32px;font-weight: 600">
                                 <a style="color: grey; text-decoration: none;" href="{% url 'beers:index' %}">Home</a>
                             </span>
                         </div>
+
                         <div class='buttons'>
-                            <div id="button1" class="active font-class" style="text-align:left;margin-top:0px;color:aqua;margin-left: 5px"><p style="font-size: 20px"><span id="loginButton">Login</span> | <span id="registerButton" style="font-size: 24px;font-weight: 600;color: #E1C63F">SignUp</span></p></div>
+                            <div class="active font-class" style="text-align:left;margin-top:0px;color:aqua;margin-left: 5px"><p style="font-size: 20px"><span  id="loginButton"  style="font-size: 24px;font-weight: 600;color: #E1C63F">Login</span> | <span id="registerButton">SignUp</span></p></div>
                             <br>
                         </div>
-                        <form class="form font" method="post" action="" data-aos="fade-in">
+                        <form method="post" enctype="multipart/form-data" class="form font" data-aos="fade-in">
                             <table>
                                 {% csrf_token %}
-                                <input type="name" class="username placeholderFont" name="username" placeholder="Username" style="background: #0C0D0F;border:0px !important;color: aliceblue;outline: 0px;margin-bottom: 8px;margin-left: 5px;width:330px;margin-right: 80px">
-                                <div style="width: 330px;height: 1px;background-color: aliceblue;margin-bottom: 40px;margin-left: 5px"></div>
+                                <input type="name" class="username placeholderFont" name="username" placeholder="Username" style="background: #0C0D0F;border:0px !important;color: aliceblue;outline: 0px;margin-bottom: 8px;font-family: Raleway;width: 330px;margin-right: 60px;margin-left: 5px">
+                                <div style="width: 330px;height: 1px;background-color: aliceblue;margin-bottom: 50px;margin-left: 5px"></div>
+                                <input type="password" class="password placeholderFont" name="password" placeholder="Password" style="background: #0C0D0F;border:0px !important;color: aliceblue;outline: 0px;margin-bottom: 8px;margin-left: 5px;font-family: Raleway;width: 330px;margin-right: 60px">
+                                <div style="width: 330px;height: 1px;background-color: aliceblue;margin-bottom: 30px;margin-left: 5px"></div>
+                                <table>
+                                    <tr>
+                                        <td style="color: aliceblue;margin-right: 5px;font-size: 14px">
+                                            Remember Me
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" style="color: aliceblue;margin-right: 94px;font-size: 14px">
+                                        </td>
 
-                                <input type="email" class="password placeholderFont" name="email" placeholder="Email - Address" style="background: #0C0D0F;border:0px !important;color: aliceblue;outline: 0px;margin-bottom: 8px;margin-left: 5px;width:330px;margin-right: 80px">
-                                <div style="width: 330px;height: 1.5px;background-color: aliceblue;margin-bottom: 40px;margin-left: 5px"></div>
-
-                                <input type="password" class="password placeholderFont" name="password" placeholder="Password" style="background: #0C0D0F;border:0px !important;color: aliceblue;outline: 0px;margin-bottom: 8px;margin-left: 5px;width:330px;margin-right: 80px">
-                                <div style="width: 330px;height: 1.5px;background-color: aliceblue;margin-bottom: 40px;margin-left: 5px"></div>
-
-
-                                <div style="color: aliceblue;margin-right: 5px;font-size: 14px;margin-left: 3px;margin-top: 46px;margin-bottom: 10px;text-align: left">
-                                    Sign Up with:
+                                        <td style="color: aliceblue;font-size: 14px;text-align: end">
+                                            Forgot Password ?
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="color: aliceblue;margin-right: 5px;font-size: 14px;margin-left: 3px;margin-top: 51px;margin-bottom: 10px;text-align: left">
+                                    Login with:
                                 </div>
                                 <table>
                                     <tr>
@@ -124,7 +133,7 @@
                                     </tr>
                                 </table>
                                 <div>
-                                <button class="login_button" type="submit">Sign Up</button>
+                                <button class="login_button" type="submit">Login</button>
                                 </div>
                             </table>
                         </form>
@@ -134,6 +143,7 @@
             </table>
         </div>
         <script>
+
             $("#button1").click(function () {
                 $(this).addClass("active");
                 $("#button2").removeClass("active");

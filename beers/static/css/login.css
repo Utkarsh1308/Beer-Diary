@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+/*dark background to support form theme*/
+body{
+    background:#101115;
+}
+
+/*sass variables used*/
+$full:100%;
+$auto:0 auto;
+$align:center;
+.field {
+    display: flex;
+    flex-flow: column-reverse;
+    margin-bottom: 1em;
+}
+/**
+* Add a transition to the label and input.
+* I'm not even sure that touch-action: manipulation works on
+* inputs, but hey, it's new and cool and could remove the
+* pesky delay.
+*/
+/****/
+
+
+@mixin disable{
+    outline:none;
+    border:none;
+}
+
+@mixin easeme{
+    -webkit-transition:1s ease;
+    -moz-transition:1s ease;
+    -o-transition:1s ease;
+    -ms-transition:1s ease;
+    transition:1s ease;
+}
+
+/*site container*/
+.wrapper{
+  position: fixed;
+  text-align: center;
+  width: 620px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+
+}
+
+h1{
+  text-align:$align;
+  padding:0px 0px 0px 0px;
+  font:50px;
+  color:#FFF;
+  text-transform:uppercase;
+  margin:0px;
+}
+
+p{
+  font:13px Open Sans;
+  color:#6E6E6E;
+  margin-bottom:6px;
+}
+
+.form{
+  width:$full;
+}
+
+input[type="password"],input[type="name"]{
+  padding:12px;
+  border-radius:5px;
+  @include disable;
+  background: #0C0D0F;
+  border:1px solid rgba(0,0,0,1);
+  margin-bottom:10px;
+  color:white;
+  outline: none;
+}
+
+input[type="submit"]{
+  margin-left: 25%;
+  width:50%;
+  margin-top: 20px;
+  padding:15px;
+  border-radius:5px;
+  @include disable;
+  font:24px;
+  color:lightblue;
+  outline: none;
+  background:#1C363E;
+  text-transform:uppercase;
+  border:1px solid white;
+  opacity:0.9;
+  border-top:1px solid rgba(255,255,255,0.8)!important;
+}
+
+#submit:hover{
+  box-shadow: 8px 8px #000 !important;
+  cursor:pointer;
+  background-color: #FFCA28 !important;
+}
+
+.buttons {
+  position: relative;
+  white-space: nowrap;
+  min-height: 3x;
+  margin-bottom: 80px;
+  top: 30px;
+  cursor: pointer !important;
+ text-align: center;
+}
+
+.buttons a {
+  width: 50px;
+  height: 33px;
+  padding-top: 9px;
+  outline-width: 0px;
+  color: black;
+  text-align: center;
+  line-height: 26px;
+  display: block;
+}
+.placeholderFont::-webkit-input-placeholder {
+  font-family: "Raleway", Times, serif;
+  color: grey;
+}
+
+#button1 {
+  border-radius: 20px 0 0 20px;
+  width: auto;
+}
+
+#button2 {
+  width: auto;
+}
+
+.font-class {
+  font-family:'Raleway', 'sans-serif';
+}
+
+.help{
+  color: white;
+}
+
+h1 {
+ text-transform: capitalize;
+  color:black;
+}
+
+#main_wrapper {
+  width:400px;
+  height:600px;
+  background: #0C0D0F;
+  box-shadow: #000 10px 10px 10px ;
+  border-radius: 0px 4px 4px 0px;
+  padding: 40px;
+}
+#button2:hover{
+  cursor:pointer;
+}
+input[type="name"], input[type="password"], textarea, select {
+  outline: none;
+  padding: 1px!important;
+  background-color: #0C0D0F !important;
+  z-index: -1;
+}
+
+@-webkit-keyframes autofill {
+    to {
+        color: #fff;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}    }
