@@ -14,36 +14,12 @@ Beer Diary
       background-color: #18191D;
     }
 
-    .box{
-        width:80px;
-        height: 1px;
-        background-color: aqua;
-        margin: auto;
-    }
-
-    .line{
-        width: 40%;
-        height: 1px;
-        background-color: aqua;
-        margin: auto;
-    }
-
     .table_options{
         color:white;
         margin-left: 12px;
     }
 
-    .table_first{
-        background-color: aqua;
-        width: 10px;
-        height:5px;
-    }
-
-    .box{
-        margin-left: 80px;
-    }
-
-    .question-box2{
+    .beer-details{
         color: white;
         border-radius: 6px;
         background-color: #0C0D0F;
@@ -77,54 +53,10 @@ Beer Diary
         color: white;
     }
 
-    a.button {
-        -webkit-appearance: button;
-        -moz-appearance: button;
-        appearance: button;
-
-        text-decoration: none;
-        color: initial;
-    }
-    a:hover{
-        color: white;
-    }
-    .tagBox{
-        background: #111214;
-        padding-left: 6px;
-        padding-right: 6px;
-        font-weight: 600;
-        color: aliceblue;
-        font-size: 12px;
-        margin-right: 6px;
-        border-radius: 20px;
-        box-shadow: 2px 2px #000;
-    }
-    .lead{
-        width: 230px;
-        height: 125px;
-        margin-top:20px;
-        border-radius: 6px;
-        box-shadow: 8px 8px #000;
-        margin-left: 40px !important;
-        background-image: linear-gradient(to bottom right, #8334b3, #3c33b2);
-    }
-
-    progress[value] {
-        -webkit-appearance: none;
-        appearance: none;
-    }
-
-    progress::-webkit-progress-bar{
-        background-color: #fff;
-        width: 100%;
-    }
-
-    progress::-webkit-progress-value {
-        background-image: linear-gradient(to bottom right, #9be627, #3de31d) !important;
-    }
     body{
         overflow-x: hidden
     }
+    
 </style>
 {% endblock %}
 
@@ -157,7 +89,7 @@ Beer Diary
           <div>
               <table>
                   <th>
-                      <div id="Leaderboard" class="raleway" style="text-align:left;color:#fff;margin-bottom:-20px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">My Posts</span></p>
+                      <div class="raleway" style="text-align:left;color:#fff;margin-bottom:-20px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">My Posts</span></p>
                       </div>
                   </th>
                   <tr style="color: aliceblue;padding: 0px">
@@ -182,7 +114,7 @@ Beer Diary
                       {% verbatim %}
 
                       <td>
-                          <div class="question-box2">
+                          <div class="beer-details">
                               <table style="width: 800px">
                                   <tr>
                                       <td style="width: 330px">
@@ -215,11 +147,5 @@ Beer Diary
           </div>
       </div>
   </div>
-  <script>
-      $('.dropdown-menu a').click(function(){
-          $('#hello').text($(this).text());
-      });
-      // Code
-  </script>
 
 {% endblock %}

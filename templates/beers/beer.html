@@ -15,36 +15,12 @@ Beer Data
       background-color: #18191D;
     }
 
-    .box{
-        width:80px;
-        height: 1px;
-        background-color: aqua;
-        margin: auto;
-    }
-
-    .line{
-        width: 40%;
-        height: 1px;
-        background-color: aqua;
-        margin: auto;
-    }
-
     .table_options{
         color:white;
         margin-left: 12px;
     }
 
-    .table_first{
-        background-color: aqua;
-        width: 10px;
-        height:5px;
-    }
-
-    .box{
-        margin-left: 80px;
-    }
-
-    .question-box2{
+    .beer-post{
         color: white;
         border-radius: 6px;
         background-color: #0C0D0F;
@@ -54,16 +30,7 @@ Beer Data
         padding: 16px 8px 0px 16px;
         box-shadow: 10px 10px #000;
     }
-    .question-box3{
-        color: white;
-        border-radius: 6px 6px 0px 0px;
-        background-color: #0C0D0F;
-        height: auto;
-        width: 820px;
-        padding: 16px 0px 8px 0px;
-        min-width: 820px;
-        box-shadow: 10px 10px #000;
-    }
+
     .green2{
         border: none;
         color: white !important;
@@ -82,70 +49,14 @@ Beer Data
         transition-duration: 0.2s;
     }
 
-    @media all and (max-width: 1300px) {
-        #Notes { display: none; }
-    }
     .green2:hover{
         opacity: 0.9;
     }
-    a.button {
-        -webkit-appearance: button;
-        -moz-appearance: button;
-        appearance: button;
 
-        text-decoration: none;
-        color: initial;
-    }
-    a:hover{
-        color: white;
-    }
     body{
         overflow-x: hidden;
     }
-    .tagBox{
-        background: #111214;
-        padding-left: 6px;
-        padding-right: 6px;
-        font-weight: 600;
-        color: aliceblue;
-        font-size: 12px;
-        margin-right: 6px;
-        border-radius: 20px;
-        box-shadow: 2px 2px #000;
-    }
-    ::-webkit-scrollbar {
-        width: 1em;
-    }
-    ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    }
-    ::-webkit-scrollbar-thumb {
-        background-color: white;
-        outline: 1px solid #672E9F;
-    }
-    .lead{
-        width: 230px;
-        height: 125px;
-        margin-top:20px;
-        border-radius: 6px;
-        box-shadow: 8px 8px #000;
-        margin-left: 40px !important;
-        background-image: linear-gradient(to bottom right, #8334b3, #3c33b2);
-    }
 
-    progress[value] {
-        -webkit-appearance: none;
-        appearance: none;
-    }
-
-    progress::-webkit-progress-bar{
-        background-color: #fff;
-        width: 100%;
-    }
-
-    progress::-webkit-progress-value {
-        background-image: linear-gradient(to bottom right, #9be627, #3de31d) !important;
-    }
 </style>
 {% endblock %}
 
@@ -160,12 +71,12 @@ Beer Data
           <div>
               <table>
                   <th>
-                      <div id="Leaderboard" class="raleway" style="text-align:left;color:#fff;margin-left:6px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">{{section.name}}</span></p>
+                      <div class="raleway" style="text-align:left;color:#fff;margin-left:6px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">{{section.name}}</span></p>
                       </div>
                   </th>
                   <tr class="table_options">
                       <td>
-                          <div class="question-box2">
+                          <div class="beer-post">
                               <table style="width: 700px;margin-bottom: 30px">
                                   <tr style="color:white">
                                       <td style="width: 330px">
@@ -216,58 +127,5 @@ Beer Data
           </div>
       </div>
   </div>
-  <script src="{% static 'js/ace-builds-master/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
-  <script>
-      var editor = ace.edit("editor");
-
-      function myFunction() {
-          var code = editor.getValue();
-          var username = document.getElementById("code")
-          username.value = code
-      }
-
-      $('#reset').click(function(){
-          editor.session.setValue("")
-      });
-
-  </script>
-  <script>
-
-      $('#customInput').hide();
-      $('#up').hide();
-
-      $('#langMenu a').click(function(){
-          $('#hello').text($(this).text());
-      });
-
-      $('#check').click(function(){
-          if($(this).prop("checked") == true){
-              $('#customInput').fadeIn();
-          }
-          else if($(this).prop("checked") == false){
-              $('#customInput').fadeOut();
-          }    });
-
-      var x = 0;
-      $('#notes').hide();
-
-      $('#noteHead').click(function(){
-          if(x % 2 == 0){
-              $('#notes').fadeIn();
-              $('#up').show();
-              $('#down').hide();
-          }
-          else {
-              $('#notes').fadeOut();
-              $('#down').show();
-              $('#up').hide();
-          }
-          x++;
-      });
-      // Code
-  </script>
-
-
-
 
 {% endblock %}
