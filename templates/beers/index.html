@@ -16,9 +16,14 @@ Beer Diary
     <h1 class="display-4" id="heading-1">Beer Diary</h1>
     <p class="lead">Share your beer drinking experience with the world</p>
     <hr class="my-4">
-    <p>Create an account to start writing your posts.</p>
-    <a class="btn btn-primary btn-lg" href="{% url 'beers:register' %}" role="button">Sign Up</a>
-    <a class="btn btn-primary btn-lg" href="{% url 'beers:login_user' %}" role="button">Log In</a>
+    {% if user.username %}
+      <p>Start writing your first post</p>
+      <a class="btn btn-info btn-lg" href="{% url 'beers:add_beer' %}" role="button">New Post</a>
+    {% else %}
+      <p>Create an account to start writing your posts.</p>
+      <a class="btn btn-primary btn-lg" href="{% url 'beers:register' %}" role="button">Sign Up</a>
+      <a class="btn btn-primary btn-lg" href="{% url 'beers:login_user' %}" role="button">Log In</a>
+    {% endif %}
   </div>
 </div>
 
