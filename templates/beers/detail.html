@@ -56,7 +56,7 @@ Beer Diary
     body{
         overflow-x: hidden
     }
-    
+
 </style>
 {% endblock %}
 
@@ -66,7 +66,7 @@ Beer Diary
 
   var posts = [];
   {% for x in Beers %}
-    posts.push({brewer:"{{ x.brewer }}", id:"x.id", delete_link:"{% url 'beers:delete_beer' x.id %}", name:'{{ x.name }}', link:"{% url 'beers:beer' beer=x.name|custom_url %}", edit_link:"{% url 'beers:update_beer' x.id %}", price: "{{ x.price }}", rating:"{{ x.rating }}", date:"{{ x.date.date }}"},)
+    posts.push({brewer:"{{ x.brewer }}", id:"x.id", delete_link:"{% url 'beers:delete_beer' x.id %}", author: '{{x.author}}', name:'{{ x.name }}', link:"{% url 'beers:beer' beer=x.name|custom_url %}", edit_link:"{% url 'beers:update_beer' x.id %}", price: "{{ x.price }}", rating:"{{ x.rating }}", date:"{{ x.date.date }}"},)
   {% endfor %}
 
   var app = angular.module("myApp",[]);
@@ -127,8 +127,9 @@ Beer Diary
                                           <div style="white-space: nowrap;text-overflow: ellipsis;width: 200px;overflow: hidden;margin-top: 8px">
                                               <h6 style="margin-left:4px;margin-top:0px;color: white;margin-bottom: 12px;width: 120px">{{x.date}}</h6>
                                           </div>
-                                          <p style="margin-bottom: 4px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px">Brewer &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> {{ x.brewer }}</span></span> </p>
 
+                                          <p style="margin-bottom: 4px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px;">Author &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> {{ x.author }}</span></span> </p>
+                                          <p style="margin-bottom: 4px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px">Brewer &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> {{ x.brewer }}</span></span> </p>
                                           <p style="margin-bottom: 4px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px;">Price &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> {{ x.price }}</span></span> </p>
                                           <p style="margin-bottom: 0px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px;">Rating &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> {{ x.rating }}</span></span> </p>
                                       </td>

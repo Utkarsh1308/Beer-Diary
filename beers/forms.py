@@ -13,6 +13,7 @@ class AddBeerForm(forms.ModelForm):
     class Meta:
         model = Beer
         fields = '__all__'
+        exclude = ['author']
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)

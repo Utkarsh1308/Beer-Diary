@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView, UpdateView, DeleteView, View
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import Beer
 from .forms import AddBeerForm, UserForm
@@ -93,17 +94,37 @@ def logout_user(request):
     }
     return render(request, 'beers/index.html', context)
 
-class AddBeer(CreateView):
+class AddBeer(LoginRequiredMixin, CreateView):
     form_class = AddBeerForm
     template_name = 'beers/add_beer.html'
     success_url = reverse_lazy('beers:detail')
 
-class UpdateBeer(UpdateView):
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class UpdateBeer(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Beer
     form_class = AddBeerForm
     template_name = 'beers/add_beer.html'
+    success_url = reverse_lazy('beers:detail')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+class DeleteBeer(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Beer
     success_url = reverse_lazy('beers:detail')
 
-class DeleteBeer(DeleteView):
-    model = Beer
-    success_url = reverse_lazy('beers:detail')
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
