@@ -41,6 +41,16 @@ Beer Data
         background-image: linear-gradient(to bottom right, #8334b3, #3c33b2);
     }
 
+    .lead-2{
+        width: 230px;
+        height: 210px;
+        margin-top:20px;
+        border-radius: 6px;
+        box-shadow: 8px 8px #000;
+        margin-left: 40px !important;
+        background-image: linear-gradient(to bottom right, #8334b3, #3c33b2);
+    }
+
     .green2{
         border: none;
         color: white !important;
@@ -140,6 +150,13 @@ Beer Data
                   <div style="width:250px; height:200px">
                     <canvas id="myChart" width="100" height="100"></canvas>
                   </div>
+              </div>
+
+              <div class="lead-2">
+
+                  <p style="color:black;font-size: 16px;padding-top: 12px;font-size:20px;font-weight: 600;text-align:center">Stats</p>
+                  <p style="color:black;font-size: 16px;padding-left: 12px;padding-top: 12px;font-weight: 600"><b>ABV:</b> {{section.abv}}%</p>
+                  <p style="color:black;font-size: 16px;padding-left: 12px;padding-top: 12px;font-weight: 600"><b>IBUs:</b> {{section.ibu}}</p>
               </div>
 
           </div>

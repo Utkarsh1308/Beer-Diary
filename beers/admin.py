@@ -23,6 +23,8 @@ class BeerAdmin(admin.ModelAdmin):
         ('Bitter',          {'fields': ['bitter']}),
         ('Dry',             {'fields': ['dry']}),
         ('Linger',          {'fields': ['linger']}),
+        ('ABV',             {'fields': ['abv']}),
+        ('IBU',             {'fields': ['ibu']}),
     ]
 
 admin.site.register(Beer, BeerAdmin)

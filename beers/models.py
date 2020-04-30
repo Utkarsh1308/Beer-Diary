@@ -24,6 +24,9 @@ class Beer(models.Model):
     dry = models.FloatField(default=10)
     linger = models.FloatField(default=5)
 
+    abv = models.FloatField(default=6, verbose_name='ABV')
+    ibu = models.FloatField(default=70, verbose_name='IBU')
+
     def __str__(self):
         return self.name
 
