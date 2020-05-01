@@ -6,9 +6,13 @@ from django.views.generic import CreateView, FormView, UpdateView, DeleteView, V
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 from .models import Beer
 from .forms import AddBeerForm, UserForm
+from .serializers import BeerSerializer
 
 # Create your views here.
 def index(request):
@@ -128,3 +132,10 @@ class DeleteBeer(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+class BeerList(APIView):
+
+    def get(self, request):
+        posts = Beer.objects.all()
+        serializer = BeerSerializer(posts, many=True)
+        return Response(serializer.data)
