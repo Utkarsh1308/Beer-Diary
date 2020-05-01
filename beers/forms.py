@@ -15,6 +15,17 @@ class AddBeerForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['author']
 
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+
+        try:
+            match = Beer.objects.get(name=name)
+        except Beer.DoesNotExist:
+            return name
+
+        raise forms.ValidationError('This name already exists. Please choose a different name.')
+
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
