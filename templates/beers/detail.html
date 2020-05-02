@@ -8,6 +8,8 @@ Beer Diary
 
 {% block add-css-files %}
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style type="text/css">
 
     .raleway {
@@ -24,10 +26,8 @@ Beer Diary
         border-radius: 6px;
         background-color: #0C0D0F;
         height: auto;
-        width: 820px;
         margin-bottom: 20px;
         padding: 16px 8px 16px 12px;
-        min-width: 600px;
         box-shadow: 10px 10px #000;
     }
 
@@ -35,11 +35,11 @@ Beer Diary
         border: none;
         color: white !important;
         padding: 4px 20px;
+        width: 110px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 15px;
-        float: right;
         border-radius: 4px;
         box-shadow: 5px 5px #000;
         margin-right: 4px;
@@ -53,8 +53,95 @@ Beer Diary
         color: white;
     }
 
-    body{
-        overflow-x: hidden
+    @media screen and (max-width: 1420px) {
+
+    }
+
+    @media screen and (max-width: 1100px) {
+
+    }
+
+    @media screen and (min-width: 769px) {
+
+
+      .beer-details {
+        width: 820px;
+        min-width: 600px;
+      }
+      .beer-table {
+        width: 800px;
+      }
+      .beer-name {
+        width: 330px;
+      }
+      .beer-data {
+        width: 220px;
+      }
+      .beer-button {
+        width: auto;
+      }
+      .green {
+        float: right;
+      }
+      .name-field {
+        width: 300px;
+      }
+      .data-field {
+        width: 200px;
+      }
+
+    }
+
+    /*
+      ##Device = Low Resolution Tablets, Mobiles (Landscape)
+      ##Screen = B/w 481px to 767px
+    */
+    @media (min-width: 481px) and (max-width: 768px) {
+
+      .beer-details {
+        width: 90%;
+      }
+      .beer-table {
+        width: 100%;
+      }
+      .beer-name {
+        width: 33.3333%;
+      }
+      .beer-data {
+        width: 33.3333%;
+      }
+      .beer-button {
+        width: 33.3333;
+      }
+
+    }
+
+    /*
+      ##Device = Most of the Smartphones Mobiles (Portrait)
+      ##Screen upto 479px
+    */
+    @media screen and (max-width: 480px) {
+
+      .beer-details {
+        width: 100%;
+      }
+      .beer-table {
+        width: 100%;
+      }
+      .beer-name {
+        width: 50%
+      }
+      .beer-data {
+        display: none;
+      }
+      .beer-button {
+        width: 50%;
+      }
+      .green {
+        float: right;
+      }
+      .name-field {
+      }
     }
 
 </style>
@@ -115,17 +202,17 @@ Beer Diary
 
                       <td>
                           <div class="beer-details">
-                              <table style="width: 800px">
+                              <table class="beer-table">
                                   <tr>
-                                      <td style="width: 330px">
-                                          <div style="white-space: nowrap;text-overflow: ellipsis;width: 300px;overflow: hidden">
-                                              <h5 style="margin-left:4px;margin-top:0px;color: white;margin-bottom: 20px;width: 120px">{{x.name}}</h5>
+                                      <td class="beer-name col-xs-12 col-sm-6 col-md-3">
+                                          <div class="name-field" style="white-space: nowrap;text-overflow: ellipsis;;overflow: hidden">
+                                              <h5 style="margin-left:4px;margin-top:0px;color: white;margin-bottom: 20px;">{{x.name}}</h5>
                                           </div>
 
                                       </td>
-                                      <td style="width: 220px">
-                                          <div style="white-space: nowrap;text-overflow: ellipsis;width: 200px;overflow: hidden;margin-top: 8px">
-                                              <h6 style="margin-left:4px;margin-top:0px;color: white;margin-bottom: 12px;width: 120px">{{x.date}}</h6>
+                                      <td class="beer-data col-xs-12 col-sm-6 col-md-3">
+                                          <div class="data-field" style="white-space: nowrap;text-overflow: ellipsis;;overflow: hidden;margin-top: 8px">
+                                              <h6 style="margin-left:4px;margin-top:0px;color: white;margin-bottom: 12px;">{{x.date}}</h6>
                                           </div>
 
                                           <p style="margin-bottom: 4px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px;">Author &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> {{ x.author }}</span></span> </p>
@@ -133,9 +220,9 @@ Beer Diary
                                           <p style="margin-bottom: 4px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px;">Price &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> {{ x.price }}</span></span> </p>
                                           <p style="margin-bottom: 0px"><span style="color:white;font-weight:100;font-size:15px;margin-left:4px;">Rating &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300"> {{ x.rating }}</span></span> </p>
                                       </td>
-                                      <td align="right" style="width: auto">
-                                          <a class="green" style="font-weight:600" id="button" href={{x.link}}>View Details</a><br><br>
-                                          <a class="green" href={{x.edit_link}} style="font-weight:600" id="button" href={{x.link}}> &nbsp;&nbsp; Edit Post &nbsp;&nbsp; </a>
+                                      <td class="beer-buttons col-xs-12 col-sm-6 col-md-3">
+                                          <a class="green" style="font-weight:600" id="button" href={{x.link}}>View Post</a><br><br>
+                                          <a class="green" href={{x.edit_link}} style="font-weight:600" id="button">Edit Post</a>
                                       </td>
                                       {% endverbatim %}
                                   </tr>

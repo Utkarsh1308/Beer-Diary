@@ -25,7 +25,6 @@ Beer Data
         border-radius: 6px;
         background-color: #0C0D0F;
         height: auto;
-        width: 820px;
         margin-bottom: 20px;
         padding: 16px 8px 0px 16px;
         box-shadow: 10px 10px #000;
@@ -77,18 +76,89 @@ Beer Data
         overflow-x: hidden;
     }
 
+    @media screen and (max-width: 1420px) {
+      .beer-box {
+        margin-left: 5px;
+        margin-top: 60px;
+      }
+      .left-box {
+        display: none;
+      }
+
+    }
+
+    @media screen and (max-width: 1100px) {
+      #stat-box {
+        margin-left: -30px;
+      }
+    }
+
+    @media screen and (min-width: 769px) {
+      #main-box {
+        margin-bottom:40px;
+        margin-top: 150px;
+      }
+      .left-box {
+        width: 60px;
+      }
+      .data-column {
+          width: 330px
+      }
+      .beer-post {
+        width: 820px;
+      }
+      .post-desc {
+        width: 820px;
+      }
+    }
+
+    /*
+      ##Device = Low Resolution Tablets, Mobiles (Landscape)
+      ##Screen = B/w 481px to 767px
+    */
+    @media (min-width: 481px) and (max-width: 768px) {
+      #stat-box {
+        margin-left: -30px;
+      }
+      .lead-2 {
+        margin-bottom: 20px;
+      }
+      .beer-post {
+        width: 90%;
+      }
+      .post-desc {
+        width: 320px;
+      }
+    }
+
+    /*
+      ##Device = Most of the Smartphones Mobiles (Portrait)
+      ##Screen upto 479px
+    */
+    @media screen and (max-width: 480px) {
+      .lead-2 {
+        margin-bottom: 20px;
+      }
+      .beer-post {
+        width: 100%;
+      }
+      .post-desc {
+        width: 300px;
+      }
+    }
+
 </style>
 {% endblock %}
 
 {% block main-content %}
 
   <div class=" raleway" style="min-width: 1000px !important;width: 100%;display: inline-block">
-      <div class="row" style="margin-bottom:40px;margin-top: 150px">
+      <div class="row" id="main-box" style="">
 
-          <div style="margin-left: 95px;width: 250px;margin-top: 135.5px;cursor: pointer">
+          <div class="left-box" style="width: 250px;margin-top: 135.5px;cursor: pointer">
 
           </div>
-          <div>
+          <div class="beer-box">
               <table>
                   <th>
                       <div class="raleway" style="text-align:left;color:#fff;margin-left:6px"><p style="font-weight: 600"><span style="padding: 10px;font-size: 32px">{{section.name}}</span></p>
@@ -97,11 +167,11 @@ Beer Data
                   <tr class="table_options">
                       <td>
                           <div class="beer-post">
-                              <table style="width: 700px;margin-bottom: 30px">
+                              <table class="beer-table" style="margin-bottom: 30px">
                                   <tr style="color:white">
-                                      <td style="width: 330px">
-                                          <div style="white-space: nowrap;text-overflow: ellipsis;width: 300px;overflow: hidden">
-                                              <h5 style="margin-left:0px;margin-top:0px;margin-bottom: 10px;width: 120px">Brewer</h5>
+                                      <td class="data-column" style="">
+                                          <div style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">
+                                              <h5 style="margin-left:0px;margin-top:0px;margin-bottom: 10px;">Brewer</h5>
                                           </div>
                                           <p style="font-weight: 100;margin-bottom: 30px">{{ section.brewer }}</p>
                                           <h6 style="margin-bottom: 10px">
@@ -123,7 +193,7 @@ Beer Data
                                           <h6 style="margin-bottom: 10px">
                                               Description
                                           </h6>
-                                          <p style="margin-bottom: 30px;font-weight: 100;">{{ section.description }}</p>
+                                          <p class="post-desc" style="margin-bottom: 30px;font-weight: 100;">{{ section.description }}</p>
                                           <h6 style="margin-bottom: 10px">
                                             <form action="{% url 'beers:delete_beer' section.id %}" method="post">
                                               {% csrf_token %}
@@ -140,7 +210,7 @@ Beer Data
               </table>
           </div>
 
-          <div class="col-md-2" style="margin-top: 30px">
+          <div class="col-xs-12 col-sm-6 col-md-3" id="stat-box" style="margin-top: 30px">
 
               <a href="{% url 'beers:detail' %}"><div class="green2" style="background-color: #7130ae;color: white;margin-left: 40px;float: none!important">Back to posts<span style="font-size: 12px">&nbsp;&#9650;</span></div></a>
 
