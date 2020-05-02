@@ -153,7 +153,7 @@ Beer Diary
 
   var posts = [];
   {% for x in Beers %}
-    posts.push({brewer:"{{ x.brewer }}", id:"x.id", delete_link:"{% url 'beers:delete_beer' x.id %}", author: '{{x.author}}', name:'{{ x.name }}', link:"{% url 'beers:beer' beer=x.name|custom_url %}", edit_link:"{% url 'beers:update_beer' x.id %}", price: "{{ x.price }}", rating:"{{ x.rating }}", date:"{{ x.date.date }}"},)
+    posts.push({brewer:"{{ x.brewer }}", id:"x.id", delete_link:"{% url 'beers:delete_beer' x.id %}", author: '{{x.author}}', name:'{{ x.name }}', link:"{% url 'beers:beer' beer=x.name|custom_url author=x.author %}", edit_link:"{% url 'beers:update_beer' x.id %}", price: "{{ x.price }}", rating:"{{ x.rating }}", date:"{{ x.date.date }}"},)
   {% endfor %}
 
   var app = angular.module("myApp",[]);

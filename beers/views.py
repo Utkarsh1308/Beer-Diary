@@ -31,7 +31,7 @@ def detail(request):
 
     return render(request, 'beers/detail.html', context)
 
-def beer(request, beer):
+def beer(request, beer, author):
     def get_beer(beer):
         if '_' in str(beer):
             sections = beer.split('_')
@@ -41,7 +41,7 @@ def beer(request, beer):
         return beer.upper() if len(beer) == 2 else beer.capitalize()
 
     Beers = Beer.objects.all()
-    section = get_object_or_404(Beer, name=get_beer(beer), author=request.user)
+    section = get_object_or_404(Beer, name=get_beer(beer), author__username=str(author))
     context = {
         'section': section,
         'Beers': Beers,
