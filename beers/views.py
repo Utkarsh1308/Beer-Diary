@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Beer
-from .forms import AddBeerForm, UserForm
+from .forms import AddBeerForm, UserForm, UpdateBeerForm
 from .serializers import BeerSerializer
 
 # Create your views here.
@@ -41,7 +41,7 @@ def beer(request, beer):
         return beer.upper() if len(beer) == 2 else beer.capitalize()
 
     Beers = Beer.objects.all()
-    section = get_object_or_404(Beer, name=get_beer(beer))
+    section = get_object_or_404(Beer, name=get_beer(beer), author=request.user)
     context = {
         'section': section,
         'Beers': Beers,
@@ -107,9 +107,14 @@ class AddBeer(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def get_form_kwargs(self):
+        form = super().get_form_kwargs()
+        form['user'] = self.request.user
+        return form
+
 class UpdateBeer(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Beer
-    form_class = AddBeerForm
+    form_class = UpdateBeerForm
     template_name = 'beers/add_beer.html'
     success_url = reverse_lazy('beers:detail')
 
